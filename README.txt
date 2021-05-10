@@ -1,5 +1,1 @@
-# vim: set ft=rst:
-
-See https://help.pythonanywhere.com/ (or click the "Help" link at the top
-right) for help on how to use PythonAnywhere, including tips on copying and
-pasting from consoles, and writing your own web applications.
+Welcome! This is Kittycards, Xudan's project for the [Shopify Backend Developer Intern Challenge](https://docs.google.com/document/d/1ZKRywXQLZWOqVOHC4JkF3LqdpO3Llpfk_CkZPR8bjak/edit#heading=h.n7bww7g70ipk). Feel free to visit [Kittycards](http://xudanbprojects.pythonanywhere.com/) directly to play with the site, valid usernames are: *user1*, *user2*, *user3*, ..., *user9*, all with password *kittycards*. Please also refer to the document (here) for additional details on design and testing. Enjoy! 

@@ -1,0 +1,78 @@
+a {
+  color: #64943E;
+}
+
+a:visited, a:hover, a:active {
+  color: #64943E;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body {
+  font-size: 15px;
+  font-family: 'Verdana', cursive;
+}
+
+.jumbotron {
+  background-image: url("jum.png");
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  margin-bottom: 0px;
+}
+
+.navbar {
+  margin-bottom: 3px;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.nav-link {
+  font-size: 18px;
+}
+
+.auth-status {
+  text-align: center;
+  color: gray;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.coins {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex div {
+  width: 90%;
+}
+
+.flex p {
+  padding-left: 2%;
+}
+
+.flex form {
+  text-align: center;
+}
+
+.card-item {
+  border-style: solid;
+  border-color: gray;
+  text-align: center;
+}
+
+.wallet {
+  text-align: center;
+}
+
+

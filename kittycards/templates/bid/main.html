@@ -1,0 +1,122 @@
+{% extends 'base_kittycards.html' %}
+
+{% block coins %}
+<p class="coins"><b>Kittycoins: </b>{{ coins }}</p>
+<p class="coins"><b>Kittycoins withholded: </b>{{ coins_withholded }}</p>
+{% endblock %}
+
+{% block left %}
+<br>
+<p><b>My Kittycards:</b></p>
+{% if cards.count > 0 %}
+{% for card in cards.all %}
+  <div class="card-item">
+    <br>
+    {% load static %}
+    {% with "images/"|add:card.image as image %}
+      <img src="{% static image %}">
+    {% endwith %}
+    <p>
+      <b>Level: </b>
+      {% if card.level == 1 %}
+        <span style="color: #FFD700">Gold</span>
+      {% elif card.level == 2 %}
+        <span style="color: #C0C0C0">Silver</span>
+      {% else %}
+        <span style="color: #CD7F32">Bronze</span>
+      {% endif %}
+    </p>
+    <br>
+  </div>
+  <br>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input name="card_id" type="hidden" value={{ card.id }}>
+    <input type="submit" class="btn-outline-primary" value="List for sale"/>
+  </form>
+  <br>
+  <br>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block middle %}
+<br>
+<p><b>My listings:</b></p>
+{% if user_listings_bids|length > 0 %}
+{% for user_listing_bid in user_listings_bids %}
+  <div class="card-item">
+    <br>
+    {% load static %}
+    {% with "images/"|add:user_listing_bid.user_listing.card.image as image %}
+      <img src="{% static image %}">
+    {% endwith %}
+    <p>
+      <b>Level: </b>
+      {% if user_listing_bid.user_listing.card.level == 1 %}
+        <span style="color: #FFD700">Gold</span>
+      {% elif user_listing_bid.user_listing.card.level == 2 %}
+        <span style="color: #C0C0C0">Silver</span>
+      {% else %}
+        <span style="color: #CD7F32">Bronze</span>
+      {% endif %}
+    </p>
+    <br>
+  </div>
+  <br>
+  <p>Current price: {{ user_listing_bid.bid_latest.price }} </p>
+  <p>Current bidder: {{ user_listing_bid.bid_latest.bidder }}</p>
+  <p>Last updated: {{ user_listing_bid.bid_latest.last_updated }}</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input name="user_listing_id" type="hidden" value={{ user_listing_bid.user_listing.id }}>
+    <input type="submit" class="btn-outline-primary" value="Remove from sale"/>
+  </form>
+  <br>
+  <br>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block right %}
+<br>
+<p><b>Other listings:</b></p>
+{% if other_listings_bids|length > 0 %}
+{% for other_listing_bid in other_listings_bids %}
+  <div class="card-item">
+    <br>
+    {% load static %}
+    {% with "images/"|add:other_listing_bid.other_listing.card.image as image %}
+      <img src="{% static image %}">
+    {% endwith %}
+    <p>
+      <b>Level: </b>
+      {% if other_listing_bid.other_listing.card.level == 1 %}
+        <span style="color: #FFD700">Gold</span>
+      {% elif user_listing_bid.other_listing.card.level == 2 %}
+        <span style="color: #C0C0C0">Silver</span>
+      {% else %}
+        <span style="color: #CD7F32">Bronze</span>
+      {% endif %}
+    </p>
+    <br>
+  </div>
+  <br>
+  <p>Current price: {{ other_listing_bid.bid_latest.price }} </p>
+  <p>Current bidder: {{ other_listing_bid.bid_latest.bidder }}</p>
+  <p>Last updated: {{ other_listing_bid.bid_latest.last_updated }}</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input name="other_listing_id" type="hidden" value={{ other_listing_bid.other_listing.id }}>
+    <select id="addprice" name="addprice">
+      <option value="1" selected>+ 1 Kittycoin</option>
+      <option value="2">+ 10 Kittycoins</option>
+      <option value="3">+ 100 Kittycoins</option>
+    </select>
+    <input type="submit" class="btn-outline-primary" value="Place bid!"/>
+  </form>
+  <br>
+  <br>
+{% endfor %}
+{% endif %}
+{% endblock %}

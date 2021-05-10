@@ -1,0 +1,16 @@
+{% extends 'base_kittycards.html' %}
+
+{% block coins %}
+<p class="coins"><b>Kittycoins: </b>{{ coins }}</p>
+<p class="coins"><b>Kittycoins withholded: </b>{{ coins_withholded }}</p>
+{% endblock %}
+
+{% block content %}
+<div class="wallet">
+  <br>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn-outline-primary" value="Click for Kittycoins"/>
+  </form>
+</div>
+{% endblock %}
